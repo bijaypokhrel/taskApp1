@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "90241919207",
+    "project_id": "taskapp-flutter-1",
+    "storage_bucket": "taskapp-flutter-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90241919207:android:7e352fed931cdbf3331a42",
+        "android_client_info": {
+          "package_name": "com.example.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90241919207-jqtjr1mol4f5lilcnbm8u8eaanisc8l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhVMTeYLDm9dWCn_JkkbQGtjhMEIRILYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90241919207-jqtjr1mol4f5lilcnbm8u8eaanisc8l2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "90241919207-3i2hadue68rof3g7u2t90h87o632m9vm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mynotes"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90241919207:android:f89c2e5d22cf0b18331a42",
+        "android_client_info": {
+          "package_name": "com.example.stylish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90241919207-jqtjr1mol4f5lilcnbm8u8eaanisc8l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhVMTeYLDm9dWCn_JkkbQGtjhMEIRILYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90241919207-jqtjr1mol4f5lilcnbm8u8eaanisc8l2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "90241919207-3i2hadue68rof3g7u2t90h87o632m9vm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mynotes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
