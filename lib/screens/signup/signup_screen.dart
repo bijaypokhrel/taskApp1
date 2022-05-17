@@ -36,152 +36,155 @@ class _SignupScreenState extends State<SignupScreen> {
       appBar: AppBar(
         title: const Text('Register'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.app_registration,
-              size: 100,
-            ),
-            const Text(
-              'Welcome!',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 36,
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.app_registration,
+                size: 100,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Please register with no fear!',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(12),
+              const Text(
+                'Welcome!',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    controller: _email,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Email',
-                      border: InputBorder.none,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Please register with no fear!',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      controller: _email,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        hintText: 'Email',
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: TextField(
-                    controller: _password,
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
-                      border: InputBorder.none,
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: TextField(
+                      controller: _password,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      decoration: const InputDecoration(
+                        hintText: 'Password',
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(12),
+              const SizedBox(
+                height: 10,
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 100),
-              child: TextButton(
-                onPressed: () async {
-                  try {
-                    final email = _email.text;
-                    final password = _password.text;
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child: TextButton(
+                  onPressed: () async {
+                    try {
+                      final email = _email.text;
+                      final password = _password.text;
 
-                    await AuthService.firebase().createUser(
-                      email: email,
-                      password: password,
-                    );
-                    AuthService.firebase().sendEmailVerification();
-                    Navigator.of(context).pushNamed(verifyEmailRoute);
-                  } on WeakPasswordAuthException {
-                    await showErrorDialog(
-                      context,
-                      'Weak Password',
-                    );
-                  } on EmailAlreadyInUseAuthException {
-                    await showErrorDialog(
-                      context,
-                      'Email is already in use',
-                    );
-                  } on InvalidEmailAuthException {
-                    await showErrorDialog(
-                      context,
-                      'Invalid Email',
-                    );
-                  } on GenericAuthException {
-                    await showErrorDialog(
-                      context,
-                      'Failed to register',
-                    );
-                  }
+                      await AuthService.firebase().createUser(
+                        email: email,
+                        password: password,
+                      );
+                      AuthService.firebase().sendEmailVerification();
+                      Navigator.of(context).pushNamed(verifyEmailRoute);
+                    } on WeakPasswordAuthException {
+                      await showErrorDialog(
+                        context,
+                        'Weak Password',
+                      );
+                    } on EmailAlreadyInUseAuthException {
+                      await showErrorDialog(
+                        context,
+                        'Email is already in use',
+                      );
+                    } on InvalidEmailAuthException {
+                      await showErrorDialog(
+                        context,
+                        'Invalid Email',
+                      );
+                    } on GenericAuthException {
+                      await showErrorDialog(
+                        context,
+                        'Failed to register',
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    loginRoute,
+                    (route) => false,
+                  );
                 },
                 child: const Text(
-                  'Register',
+                  'Already registered? Login here!',
                   style: TextStyle(
-                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  loginRoute,
-                  (route) => false,
-                );
-              },
-              child: const Text(
-                'Already registered? Login here!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
